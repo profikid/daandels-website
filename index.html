@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laurens | Flower Lover, Hopeless Dog Friend & Trader</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2d6a4f;
+            --secondary: #40916c;
+            --accent: #d8f3dc;
+            --warm: #f4a261;
+            --dark: #1b4332;
+            --light: #f8f9fa;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--primary);
+            font-weight: 700;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--accent) 0%, #fff 50%, #e9f5db 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            gap: 3rem;
+        }
+        
+        .hero-image {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+            }
+            .hero-image {
+                width: 200px;
+                height: 200px;
+            }
+        }
+        
+        .hero::before {
+            content: '🌸';
+            position: absolute;
+            font-size: 3rem;
+            top: 15%;
+            left: 10%;
+            animation: float 6s ease-in-out infinite;
+            opacity: 0.6;
+        }
+        
+        .hero::after {
+            content: '🐕';
+            position: absolute;
+            font-size: 3rem;
+            bottom: 20%;
+            right: 10%;
+            animation: float 7s ease-in-out infinite reverse;
+            opacity: 0.6;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+        
+        .hero-content h1 span {
+            color: var(--secondary);
+        }
+        
+        .hero-content p {
+            font-size: 1.3rem;
+            color: #555;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        
+        .cta-btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(45,106,79,0.3);
+        }
+        
+        .cta-btn:hover {
+            background: var(--dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(45,106,79,0.4);
+        }
+        
+        /* About Section */
+        .about {
+            padding: 6rem 5%;
+            background: white;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            color: var(--dark);
+            margin-bottom: 3rem;
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .about-card {
+            background: var(--light);
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: transform 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .about-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--secondary);
+        }
+        
+        .about-card .icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+        
+        .about-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        /* Trade Bot Section */
+        .trade-bot {
+            padding: 6rem 5%;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .trade-bot .section-title {
+            color: white;
+        }
+        
+        .bot-showcase {
+            max-width: 800px;
+            margin: 3rem auto;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .bot-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--warm);
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .bot-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+            text-align: left;
+        }
+        
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+        }
+        
+        .feature-icon {
+            font-size: 1.5rem;
+        }
+        
+        /* Gallery Section */
+        .gallery {
+            padding: 6rem 5%;
+            background: var(--accent);
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .gallery-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            aspect-ratio: 1;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            padding: 1.5rem;
+            color: white;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 6rem 5%;
+            background: white;
+            text-align: center;
+        }
+        
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            text-decoration: none;
+            font-size: 1.3rem;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--dark);
+            transform: translateY(-5px);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        footer p {
+            opacity: 0.8;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .bot-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">🌿 Laurens</div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#bot">Trade Bot</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <img src="laurens.jpg" alt="Laurens" class="hero-image">
+        <div class="hero-content">
+            <h1>Hi, I'm <span>Laurens</span></h1>
+            <p>Flower enthusiast 🌸 • Hopeless dog friend 🐕 • Algorithmic trader 🤖</p>
+            <a href="#about" class="cta-btn">Get to Know Me</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <h2 class="section-title">What Makes Me Tick</h2>
+        <div class="about-grid">
+            <div class="about-card">
+                <div class="icon">🌸</div>
+                <h3>Flower Fanatic</h3>
+                <p>There's something magical about watching flowers bloom. I love gardening, floral photography, and bringing nature's beauty into everyday life.</p>
+            </div>
+            <div class="about-card">
+                <div class="icon">🐕</div>
+                <h3>Hopeless Dog Friend</h3>
+                <p>I'm a hopeless case when it comes to dogs. Every pup I meet gets my full attention (and probably too many treats). Can't help it — they're just too good!</p>
+            </div>
+            <div class="about-card">
+                <div class="icon">🍽️</div>
+                <h3>Food Explorer</h3>
+                <p>Always hungry for new experiences and flavors. From street food to fine dining, I appreciate a good meal shared with great company.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trade Bot Section -->
+    <section class="trade-bot" id="bot">
+        <h2 class="section-title">My Trade Bot</h2>
+        <p style="max-width: 600px; margin: 0 auto; opacity: 0.9;">Automated trading strategies powered by data and algorithms</p>
+        
+        <div class="bot-showcase">
+            <div class="bot-stats">
+                <div class="stat">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Active Trading</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">&lt;50ms</div>
+                    <div class="stat-label">Execution Speed</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">Multi</div>
+                    <div class="stat-label">Markets</div>
+                </div>
+            </div>
+            
+            <div class="bot-features">
+                <div class="feature">
+                    <span class="feature-icon">📊</span>
+                    <span>Real-time market analysis</span>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">🤖</span>
+                    <span>AI-powered decision making</span>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">🔒</span>
+                    <span>Risk management protocols</span>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">📈</span>
+                    <span>Portfolio optimization</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <h2 class="section-title">My World</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=400" alt="Beautiful flowers">
+                <div class="gallery-overlay">
+                    <p>🌸 Flower hunting</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=400" alt="Happy dog">
+                <div class="gallery-overlay">
+                    <p>🐕 Best friends</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1462275646964-a0e3386b89fa?w=400" alt="Cherry blossoms">
+                <div class="gallery-overlay">
+                    <p>🌸 Spring vibes</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=400" alt="Dogs playing">
+                <div class="gallery-overlay">
+                    <p>🐕 Playtime</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="contact-content">
+            <h2 class="section-title">Let's Connect</h2>
+            <p>Always open to chatting about flowers, dogs, trading strategies, or just life in general.</p>
+            <div class="social-links">
+                <a href="#" title="Twitter">🐦</a>
+                <a href="#" title="Instagram">📷</a>
+                <a href="#" title="Telegram">✈️</a>
+                <a href="#" title="Email">✉️</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Made with 🌸, 🐕 & ☕ by Laurens</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe cards and gallery items
+        document.querySelectorAll('.about-card, .gallery-item, .feature').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
